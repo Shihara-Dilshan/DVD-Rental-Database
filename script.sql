@@ -50,9 +50,127 @@ CREATE TABLE langauge(
 
 DROP TABLE IF EXISTS inventory;
 CREATE TABLE inventory(
+   inventory_id UUID NOT NULL,
+   film_id UUID NOT NULL,
+   store_id UUID,
+   last_update TIMESTAMP DEFAULT NOW(),
    
-    
+   CONSTRAINT pk_inventory PRIMARY KEY(inventory_id)
 );
+
+
+DROP TABLE IF EXISTS rental;
+CREATE TABLE rental(
+   rental_id UUID NOT NULL,
+   rental_date TIMESTAMP DEFAULT NOW(),
+   inventory_id UUID NOT NULL,
+   customer_id UUID NOT NULL,
+   return_date TIMESTAMP DEFAULT NOW(),
+   staff_id UUID NOT NULL,
+   last_update TIMESTAMP DEFAULT NOW(),
+   
+   CONSTRAINT pk_rental PRIMARY KEY(rental_id)
+);
+
+
+DROP TABLE IF EXISTS payment;
+CREATE TABLE payment(
+   payment_id UUID NOT NULL,
+   customer_id UUID NOT NULL,
+   staff_id UUID NOT NULL,
+   rental_id UUID NOT NULL,
+   amount FLOAT NOT NULL,
+   payment_date TIMESTAMP DEFAULT NOW(),
+   
+   CONSTRAINT pk_payment PRIMARY KEY(payment_id)   
+);
+
+
+DROP TABLE IF EXISTS staff;
+CREATE TABLE staff(
+   staff_id UUID NOT NULL,
+   first_name VARCHAR(50) NOT NULL,
+   last_name VARCHAR(50) NOT NULL,
+   address VARCHAR(50) NOT NULL,
+   email VARCHAR(50) NOT NULL,
+   store_id UUID,
+   active BOOLEAN NOT NULL,
+   username VARCHAR(50) NOT NULL UNIQUE,
+   password VARCHAR(50) NOT NULL,
+   last_update TIMESTAMP DEFAULT NOW(),
+   picture VARCHAR(256),
+   
+   CONSTRAINT pk_staff PRIMARY KEY(staff_id)
+);
+
+
+DROP TABLE IF EXISTS actor;
+CREATE TABLE actor(
+   actor_id UUID NOT NULL,
+   first_name VARCHAR(100) NOT NULL,
+   last_name VARCHAR(100) NOT NULL,
+   last_update TIMESTAMP DEFAULT NOW(),
+   
+   CONSTRAINT pk_actor PRIMARY KEY(actor_id)
+);
+
+
+DROP TABLE IF EXISTS customer;
+CREATE TABLE customer(
+   customer_id UUID NOT NULL,
+   store_id UUID,
+   first_name VARCHAR(100) NOT NULL,
+   last_name VARCHAR(100) NOT NULL,
+   email VARCHAR(100) NOT NULL,
+   address_id UUID NOT NULL,
+   active_bool BOOLEAN NOT NULL,
+   create_date TIMESTAMP DEFAULT NOW(),
+   last_update TIMESTAMP DEFAULT NOW(),
+   ative BOOLEAN NOT NULL,
+   
+   CONSTRAINT pk_customer PRIMARY KEY(customer_id)
+);
+
+
+DROP TABLE IF EXISTS address;
+CREATE TABLE address(
+   address_id UUID NOT NULL,
+   address VARCHAR(100) NOT NULL,
+   address2 VARCHAR(100) NOT NULL,
+   district VARCHAR(100) NOT NULL,
+   city_id UUID NOT NULL,
+   postal_code INT NOT NULL,
+   phone CHAR(10) NOT NULL,
+   last_update TIMESTAMP DEFAULT NOW(),
+   
+   CONSTRAINT phone_number CHECK(phone LIKE '[0-9]*10'),
+   CONSTRAINT pk_address PRIMARY KEY(address_id)
+);
+
+
+DROP TABLE IF EXISTS city;
+CREATE TABLE city(
+   city_id UUID NOT NULL,
+   city VARCHAR(50) NOT NULL,
+   country_id UUID NOT NULL,
+   last_update TIMESTAMP DEFAULT NOW(),
+   
+   CONSTRAINT pk_city PRIMARY KEY(city_id)
+);
+
+
+DROP TABLE IF EXISTS store;
+CREATE TABLE store(
+   store_id UUID NOT NULL,
+   manager_staff_id UUID NOT NULL,
+   address_id UUID NOT NULL,
+   last_update TIMESTAMP DEFAULT NOW(),
+   
+   CONSTRAINT pk_store PRIMARY KEY(store_id)
+);
+
+
+
 
 
 
