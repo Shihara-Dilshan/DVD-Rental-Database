@@ -98,5 +98,42 @@ INSERT INTO address(address_id, address, address2, district, city_id, postal_cod
 VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', '52/f Kandy colombo', '12/c Kandy', 'kandy', '065be13b-2aef-4f09-9fd1-653cb5eae2c8', '20400', '0813848908');
 
 
+INSERT INTO customer(customer_id, first_name, last_name, email, address_id, active_bool, ative)
+VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8', 'Shihara', 'Dilshan', 'Shihara@gmail.com', '065be13b-2aef-4f09-9fd1-653cb5eae2c8', TRUE, TRUE);
+INSERT INTO customer(customer_id, first_name, last_name, email, address_id, active_bool, ative)
+VALUES('be36445e-824d-434e-8a4b-275226cdc179', 'Ila', 'Umesha', 'uemsha@gmail.com', 'be36445e-824d-434e-8a4b-275226cdc179', TRUE, TRUE);
+INSERT INTO customer(customer_id, first_name, last_name, email, address_id, active_bool, ative)
+VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', 'Ramanayaka', 'Dana', 'Dana@gmail.com', '2b98158c-cb48-490d-89e3-67852ecef6cc', TRUE, TRUE);
+
+
+INSERT INTO staff(staff_id, first_name,address ,address_id  ,last_name, email, active, username, password, picture)
+VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8', 'Ray','nonfe' ,'065be13b-2aef-4f09-9fd1-653cb5eae2c8' ,'John', 'ray@gmail.com', TRUE, 'john2', '3897ie8e78fsdsdsdsfsf', 'URL');
+INSERT INTO staff(staff_id, first_name,address ,address_id  ,last_name, email, active, username, password, picture)
+VALUES('be36445e-824d-434e-8a4b-275226cdc179', 'Shihara','nodnef' ,'be36445e-824d-434e-8a4b-275226cdc179' ,'shihara', 'shihafra@gmail.com', TRUE, 'john', '3897ie8e78fsdsdsdsfsf', 'URL');
+INSERT INTO staff(staff_id, first_name,address ,address_id  ,last_name, email, active, username, password, picture)
+VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', 'Dilshan','none' ,'2b98158c-cb48-490d-89e3-67852ecef6cc' ,'dilshan', 'dilshan@gmail.com', TRUE, 'john3', '3897ie8e78fsdsdsdsfsf', 'URL');
+
+
+INSERT INTO rental(rental_id, inventory_id, customer_id, staff_id)
+VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8','065be13b-2aef-4f09-9fd1-653cb5eae2c8','065be13b-2aef-4f09-9fd1-653cb5eae2c8','065be13b-2aef-4f09-9fd1-653cb5eae2c8');
+INSERT INTO rental(rental_id, inventory_id, customer_id, staff_id)
+VALUES('be36445e-824d-434e-8a4b-275226cdc179','be36445e-824d-434e-8a4b-275226cdc179','be36445e-824d-434e-8a4b-275226cdc179','be36445e-824d-434e-8a4b-275226cdc179');
+INSERT INTO rental(rental_id, inventory_id, customer_id, staff_id)
+VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc','2b98158c-cb48-490d-89e3-67852ecef6cc','2b98158c-cb48-490d-89e3-67852ecef6cc','2b98158c-cb48-490d-89e3-67852ecef6cc');
+
+INSERT INTO store(store_id, manager_staff_id, address_id)
+VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8','065be13b-2aef-4f09-9fd1-653cb5eae2c8','065be13b-2aef-4f09-9fd1-653cb5eae2c8');
+INSERT INTO store(store_id, manager_staff_id, address_id)
+VALUES('be36445e-824d-434e-8a4b-275226cdc179','be36445e-824d-434e-8a4b-275226cdc179','be36445e-824d-434e-8a4b-275226cdc179');
+INSERT INTO store(store_id, manager_staff_id, address_id)
+VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc','2b98158c-cb48-490d-89e3-67852ecef6cc','2b98158c-cb48-490d-89e3-67852ecef6cc');
+
+
+INSERT INTO payment(payment_id, customer_id, staff_id, rental_id, amount)
+VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8', '065be13b-2aef-4f09-9fd1-653cb5eae2c8', '065be13b-2aef-4f09-9fd1-653cb5eae2c8','065be13b-2aef-4f09-9fd1-653cb5eae2c8', '12000')
+
+
+
+
 
 

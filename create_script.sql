@@ -120,6 +120,8 @@ CREATE TABLE staff(
 ALTER TABLE staff
 ADD COLUMN address_id UUID NOT NULL;
 
+ALTER TABLE staff
+DROP CONSTRAINT fk_store;
 
 DROP TABLE IF EXISTS actor;
 CREATE TABLE actor(
@@ -147,6 +149,9 @@ CREATE TABLE customer(
    
    CONSTRAINT pk_customer PRIMARY KEY(customer_id)
 );
+
+ALTER TABLE customer
+DROP COLUMN store_id;
 
 
 DROP TABLE IF EXISTS address;
