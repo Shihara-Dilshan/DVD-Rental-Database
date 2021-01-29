@@ -6,6 +6,6 @@ create or replace view myview as
 		FROM film_category fc 
 		HAVING count(film_id) > 1
 	)
-	INNER JOIN LANGUAGE l 
+	INNER JOIN language l 
 	ON f.language_id = l.language_id;
 
