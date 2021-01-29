@@ -37,6 +37,9 @@ CREATE TABLE film(
     CONSTRAINT format_year CHECK(release_year BETWEEN 1800 AND 3000) 
 );
 
+ALTER TABLE film
+ADD COLUMN rental_rate FLOAT;
+
 
 DROP TABLE IF EXISTS langauge;
 CREATE TABLE langauge(
