@@ -192,7 +192,6 @@ CREATE TABLE store(
    CONSTRAINT pk_store PRIMARY KEY(store_id)
 );
 
-
 ALTER TABLE film_category
     ADD CONSTRAINT fk_category
     FOREIGN KEY(category_id) REFERENCES category(category_id)
@@ -216,7 +215,7 @@ ALTER TABLE inventory
     FOREIGN KEY(film_id) REFERENCES FILM(film_id)
     ON UPDATE CASCADE
     ON DELETE NO ACTION;   
-   
+  
 ALTER TABLE rental
     ADD CONSTRAINT fk_customer 
     FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
@@ -234,19 +233,19 @@ ALTER TABLE rental
     FOREIGN KEY(inventory_id) REFERENCES inventory(inventory_id)
     ON UPDATE CASCADE
     ON DELETE NO ACTION; 
-    
+     
 ALTER TABLE payment
     ADD CONSTRAINT fk_rental
     FOREIGN KEY(payment_id) REFERENCES rental(rental_id)
     ON UPDATE CASCADE
     ON DELETE NO ACTION; 
-    
+
 ALTER TABLE payment
     ADD CONSTRAINT fk_staff
     FOREIGN KEY(staff_id) REFERENCES staff(staff_id)
     ON UPDATE CASCADE
     ON DELETE NO ACTION;   
-   
+  
 ALTER TABLE payment
     ADD CONSTRAINT fk_customer
     FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
@@ -258,25 +257,26 @@ ALTER TABLE staff
 	FOREIGN KEY(address_id) REFERENCES address(address_id)
 	ON UPDATE CASCADE
     ON DELETE NO ACTION;    
-    
+
 ALTER TABLE staff
 	ADD CONSTRAINT fk_store
 	FOREIGN KEY(store_id) REFERENCES store(store_id)
 	ON UPDATE CASCADE
     ON DELETE NO ACTION;    
-     
+  
 ALTER TABLE film_actor
     ADD CONSTRAINT fk_actor
     FOREIGN KEY(actor_id) REFERENCES actor(actor_id)
 	ON UPDATE CASCADE
     ON DELETE NO ACTION;    
-   
+
 ALTER TABLE film_actor
     ADD CONSTRAINT fk_film
     FOREIGN KEY(film_id) REFERENCES film(film_id)
 	ON UPDATE CASCADE
     ON DELETE NO ACTION; 
-   
+    
+
 ALTER TABLE customer
 	ADD CONSTRAINT fk_address
 	FOREIGN KEY(address_id) REFERENCES address(address_id)
@@ -288,7 +288,7 @@ ALTER TABLE address
 	FOREIGN KEY(city_id) REFERENCES city(city_id)
 	ON UPDATE CASCADE
     ON DELETE NO ACTION;   
-   
+  
 ALTER TABLE city 
 	ADD CONSTRAINT fk_country
 	FOREIGN KEY(country_id) REFERENCES country(country_id)
@@ -300,7 +300,7 @@ ALTER TABLE store
 	FOREIGN KEY(manager_staff_id) REFERENCES staff(staff_id)
 	ON UPDATE CASCADE
     ON DELETE NO ACTION; 
-   
+
 ALTER TABLE store 
 	ADD CONSTRAINT fk_address
 	FOREIGN KEY(address_id) REFERENCES address(address_id)
