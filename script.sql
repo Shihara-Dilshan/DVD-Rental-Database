@@ -47,6 +47,17 @@ CREATE TABLE langauge(
     CONSTRAINT pk_language PRIMARY KEY(language_id)
 );
 
+
+DROP TABLE IF EXISTS film_actor;
+CREATE TABLE film_actor(
+    actor_id UUID NOT NULL,
+    film_id UUID NOT NULL,
+    last_update TIMESTAMP DEFAULT NOW(),
+
+    CONSTRAINT pk_film_actor PRIMARY KEY(actor_id, film_id)
+);
+
+
 DROP TABLE IF EXISTS inventory;
 CREATE TABLE inventory(
    inventory_id UUID NOT NULL,
@@ -101,6 +112,9 @@ CREATE TABLE staff(
    
    CONSTRAINT pk_staff PRIMARY KEY(staff_id)
 );
+
+ALTER TABLE staff
+ADD COLUMN address_id UUID NOT NULL;
 
 
 DROP TABLE IF EXISTS actor;
@@ -158,6 +172,16 @@ CREATE TABLE city(
 );
 
 
+DROP TABLE IF EXISTS country;
+CREATE TABLE country(
+   country_id UUID NOT NULL,
+   country VARCHAR(50) NOT NULL,
+   last_update TIMESTAMP DEFAULT NOW(),
+   
+   CONSTRAINT pk_country PRIMARY KEY(country_id)
+);
+
+
 DROP TABLE IF EXISTS store;
 CREATE TABLE store(
    store_id UUID NOT NULL,
@@ -194,19 +218,96 @@ ALTER TABLE inventory
     ON DELETE NO ACTION;   
    
 ALTER TABLE rental
-    ADD	CONSTRAINT fk_customer 
+    ADD CONSTRAINT fk_customer 
     FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
     ON UPDATE CASCADE
     ON DELETE NO ACTION; 
 
 ALTER TABLE rental
-    ADD	CONSTRAINT fk_staff 
+    ADD CONSTRAINT fk_staff 
     FOREIGN KEY(staff_id) REFERENCES staff(staff_id)
     ON UPDATE CASCADE
     ON DELETE NO ACTION; 
 
 ALTER TABLE rental
-	ADD CONSTRAINT fk_inventory
-	FOREIGN KEY(inventory_id) REFERENCES inventory(inventory_id)
+    ADD CONSTRAINT fk_inventory
+    FOREIGN KEY(inventory_id) REFERENCES inventory(inventory_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION; 
+    
+ALTER TABLE payment
+    ADD CONSTRAINT fk_rental
+    FOREIGN KEY(payment_id) REFERENCES rental(rental_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION; 
+    
+ALTER TABLE payment
+    ADD CONSTRAINT fk_staff
+    FOREIGN KEY(staff_id) REFERENCES staff(staff_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION;   
+   
+ALTER TABLE payment
+    ADD CONSTRAINT fk_customer
+    FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION;    
+
+ALTER TABLE staff
+	ADD CONSTRAINT fk_address
+	FOREIGN KEY(address_id) REFERENCES address(address_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION;    
+    
+ALTER TABLE staff
+	ADD CONSTRAINT fk_store
+	FOREIGN KEY(store_id) REFERENCES store(store_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION;    
+     
+ALTER TABLE film_actor
+    ADD CONSTRAINT fk_actor
+    FOREIGN KEY(actor_id) REFERENCES actor(actor_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION;    
+   
+ALTER TABLE film_actor
+    ADD CONSTRAINT fk_film
+    FOREIGN KEY(film_id) REFERENCES film(film_id)
 	ON UPDATE CASCADE
     ON DELETE NO ACTION; 
+   
+ALTER TABLE customer
+	ADD CONSTRAINT fk_address
+	FOREIGN KEY(address_id) REFERENCES address(address_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION; 
+   
+ALTER TABLE address 
+	ADD CONSTRAINT fk_city
+	FOREIGN KEY(city_id) REFERENCES city(city_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION;   
+   
+ALTER TABLE city 
+	ADD CONSTRAINT fk_country
+	FOREIGN KEY(country_id) REFERENCES country(country_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION; 
+
+ALTER TABLE store 
+	ADD CONSTRAINT fk_staff
+	FOREIGN KEY(manager_staff_id) REFERENCES staff(staff_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION; 
+   
+ALTER TABLE store 
+	ADD CONSTRAINT fk_address
+	FOREIGN KEY(address_id) REFERENCES address(address_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION;  
+   
+    
+   
+   
+   
