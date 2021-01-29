@@ -41,12 +41,11 @@ CREATE TABLE film(
 DROP TABLE IF EXISTS langauge;
 CREATE TABLE langauge(
     language_id UUID NOT NULL,
-    film_id UUID NOT NULL,
+    name VARCHAR(100) NOT NULL,
     last_update TIMESTAMP DEFAULT NOW(),
     
-    CONSTRAINT pk_language PRIMARY KEY(language_id, film_id)
+    CONSTRAINT pk_language PRIMARY KEY(language_id)
 );
-
 
 DROP TABLE IF EXISTS inventory;
 CREATE TABLE inventory(
@@ -170,7 +169,44 @@ CREATE TABLE store(
 );
 
 
+ALTER TABLE film_category
+    ADD CONSTRAINT fk_category
+    FOREIGN KEY(category_id) REFERENCES category(category_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION;
 
+ALTER TABLE film_category
+    ADD CONSTRAINT fk_film
+    FOREIGN KEY(film_id) REFERENCES film(film_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION;   
 
+ALTER TABLE film
+    ADD CONSTRAINT fk_language
+    FOREIGN KEY(language_id) REFERENCES langauge(language_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION;   
 
+ALTER TABLE inventory 
+    ADD CONSTRAINT fk_film
+    FOREIGN KEY(film_id) REFERENCES FILM(film_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION;   
+   
+ALTER TABLE rental
+    ADD	CONSTRAINT fk_customer 
+    FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION; 
 
+ALTER TABLE rental
+    ADD	CONSTRAINT fk_staff 
+    FOREIGN KEY(staff_id) REFERENCES staff(staff_id)
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION; 
+
+ALTER TABLE rental
+	ADD CONSTRAINT fk_inventory
+	FOREIGN KEY(inventory_id) REFERENCES inventory(inventory_id)
+	ON UPDATE CASCADE
+    ON DELETE NO ACTION; 
