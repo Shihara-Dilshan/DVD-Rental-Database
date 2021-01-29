@@ -62,5 +62,41 @@ INSERT INTO film_category(film_id, category_id)
 VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', '2b98158c-cb48-490d-89e3-67852ecef6cc');
 
 
+INSERT INTO inventory(inventory_id, film_id) VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8','2b98158c-cb48-490d-89e3-67852ecef6cc');
+INSERT INTO inventory(inventory_id, film_id) VALUES('be36445e-824d-434e-8a4b-275226cdc179','be36445e-824d-434e-8a4b-275226cdc179');
+INSERT INTO inventory(inventory_id, film_id) VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc','065be13b-2aef-4f09-9fd1-653cb5eae2c8');
+
+
+INSERT INTO actor(actor_id, first_name, last_name)
+VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8', 'Robert','Journey Jr');
+INSERT INTO actor(actor_id, first_name, last_name)
+VALUES('be36445e-824d-434e-8a4b-275226cdc179', 'Ray','Romano');
+INSERT INTO actor(actor_id, first_name, last_name)
+VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', 'Dennis','John');
+
+
+INSERT INTO film_actor(actor_id, film_id) VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8', '2b98158c-cb48-490d-89e3-67852ecef6cc');
+INSERT INTO film_actor(actor_id, film_id) VALUES('be36445e-824d-434e-8a4b-275226cdc179', 'be36445e-824d-434e-8a4b-275226cdc179');
+INSERT INTO film_actor(actor_id, film_id) VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', '065be13b-2aef-4f09-9fd1-653cb5eae2c8');
+
+
+INSERT INTO country(country_id, country) VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8', 'Sri Lanka');
+INSERT INTO country(country_id, country) VALUES('be36445e-824d-434e-8a4b-275226cdc179', 'India');
+INSERT INTO country(country_id, country) VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', 'US');
+
+
+INSERT INTO city(city_id , city, country_id ) VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8', 'kandy', '065be13b-2aef-4f09-9fd1-653cb5eae2c8');
+INSERT INTO city(city_id, city, country_id) VALUES('be36445e-824d-434e-8a4b-275226cdc179', 'Hydrabad', 'be36445e-824d-434e-8a4b-275226cdc179');
+INSERT INTO city(city_id, city, country_id) VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', 'California', '2b98158c-cb48-490d-89e3-67852ecef6cc');
+
+
+INSERT INTO address(address_id, address, address2, district, city_id, postal_code, phone)
+VALUES('065be13b-2aef-4f09-9fd1-653cb5eae2c8', '55/f Kandy colombo', '55/c Kandy', 'kandy', '065be13b-2aef-4f09-9fd1-653cb5eae2c8', '20400', '0813848908');
+INSERT INTO address(address_id, address, address2, district, city_id, postal_code, phone)
+VALUES('be36445e-824d-434e-8a4b-275226cdc179', '53/f Kandy kandy', '23/c Kandy', 'kandy', '065be13b-2aef-4f09-9fd1-653cb5eae2c8', '20400', '0813848908');
+INSERT INTO address(address_id, address, address2, district, city_id, postal_code, phone)
+VALUES('2b98158c-cb48-490d-89e3-67852ecef6cc', '52/f Kandy colombo', '12/c Kandy', 'kandy', '065be13b-2aef-4f09-9fd1-653cb5eae2c8', '20400', '0813848908');
+
+
 
 

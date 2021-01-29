@@ -71,6 +71,8 @@ CREATE TABLE inventory(
    CONSTRAINT pk_inventory PRIMARY KEY(inventory_id)
 );
 
+ALTER TABLE inventory
+DROP COLUMN store_id; 
 
 DROP TABLE IF EXISTS rental;
 CREATE TABLE rental(
@@ -97,7 +99,6 @@ CREATE TABLE payment(
    
    CONSTRAINT pk_payment PRIMARY KEY(payment_id)   
 );
-
 
 DROP TABLE IF EXISTS staff;
 CREATE TABLE staff(
@@ -163,6 +164,8 @@ CREATE TABLE address(
    CONSTRAINT pk_address PRIMARY KEY(address_id)
 );
 
+ALTER TABLE address
+DROP CONSTRAINT phone_number;
 
 DROP TABLE IF EXISTS city;
 CREATE TABLE city(
